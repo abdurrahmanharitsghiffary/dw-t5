@@ -158,7 +158,7 @@ const renderProjects = () => {
   const el = document.getElementById("project-lists");
   el.innerHTML = "";
 
-  if (projects.length > 0) {
+  if (projects.length > 0 || sampleProjects.length > 0) {
     el.innerHTML = [...sampleProjects, ...projects]
       .map((project) =>
         ProjectCard({
@@ -203,35 +203,6 @@ const ProjectCard = ({
   currentUrl.searchParams.set("es-date", startDate + "," + endDate);
 
   return `<div class="card-project">
-  <header class="card-header">
-    <img
-      src="${src}"
-      alt="${title}"
-    />
-  </header>
-  <div class="card-body">
-  <div class="title">
-  <h2>${title}</h2>
-  <p>Duration: ${duration}</p>
-  </div>
-    <p>
-      ${description}
-    </p>
-    <h3>Technologies</h3>
-    <ul class="icon-list">
-      ${technologies.map((tech) => `<li>${techIcons[tech]}</li>`).join("")}
-    </ul>
-    <a class="detail-link" href="${currentUrl.href}"></a>
-  </div>
-  <footer class="card-footer">
-    <button class="button button-dark fw-bold r-sm fullwidth">
-      Edit
-    </button>
-    <button class="button button-dark fw-bold r-sm fullwidth">
-      Delete
-    </button>
-  </footer>
-  </div><div class="card-project">
   <header class="card-header">
     <img
       src="${src}"
@@ -315,17 +286,4 @@ const getFormattedDuration = (durr) => {
   return durrStr.join(", ");
 };
 
-const el = document.getElementById("project-lists");
-
-el.innerHTML = sampleProjects
-  .map((project) =>
-    ProjectCard({
-      src: project.image,
-      title: project.projectName,
-      description: project.description,
-      technologies: project.technologies,
-      endDate: project.endDate,
-      startDate: project.startDate,
-    })
-  )
-  .join("");
+renderProjects();
