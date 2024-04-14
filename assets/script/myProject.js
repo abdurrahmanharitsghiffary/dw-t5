@@ -30,6 +30,15 @@ const sampleProjects = [
     description: "Project pertama saya",
     technologies: ["ts"],
   },
+  {
+    projectName: "Project 1",
+    image:
+      "https://plus.unsplash.com/premium_photo-1685082778205-8665f65e8c2c?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    startDate: "2024-12-03",
+    endDate: "2024-12-04",
+    description: "Project pertama saya",
+    technologies: ["ts"],
+  },
 ];
 
 const fieldIds = [
@@ -239,13 +248,13 @@ const getDuration = (stDate, endDate) => {
   const end = new Date(endDate);
   const t = end.getTime() - start.getTime();
 
-  const durrInY = t / (1000 * 60 * 60 * 24 * 30.43 * 12);
+  const durrInY = t / (1000 * 60 * 60 * 24 * 30.44 * 12);
 
   const resY = durrInY - Math.floor(durrInY);
   const month = resY * 12;
 
   const resM = month - Math.floor(month);
-  const day = resM * 30.43;
+  const day = resM * 30.44;
 
   const resD = day - Math.floor(day);
   const hour = resD * 24;
@@ -256,6 +265,8 @@ const getDuration = (stDate, endDate) => {
   const resMin = minute - Math.floor(minute);
 
   const second = resMin * 60;
+
+  console.log({ y: durrInY, month, day, hour, minute, second });
 
   return {
     year: Math.floor(durrInY),
